@@ -1,18 +1,22 @@
+let input = document.getElementById('emailContent') as HTMLInputElement
+
 class Singleton {
-    static instance: Singleton
+    private static instance: Singleton = input
 
     private constructor(emailAddress: string) {
-        console.log(`${emailAddress}`)
+        alert(`${emailAddress} has sent you an email!`)
     }
 
     public static getInstance() : Singleton {
         if (!Singleton.instance) {
-            Singleton.instance =  new Singleton('sample')
+            Singleton.instance = input
         }
         return Singleton.instance
     }
-
-
 }
 
 
+input?.addEventListener("click", function() {
+    let result = Singleton.getInstance()
+    return result
+})
